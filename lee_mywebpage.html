@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+<head>
+    <link rel="icon" href="https://thumbs.dreamstime.com/t/cool-computer-parts-background-20782.jpg">
+    <title>Lee Robertson's Webpage</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content ="width=device-width,initial-scale=1,user-scalable=yes" />
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        html, body {
+            background: no-repeat center fixed, #282828;/* match border color */
+            text-align: center;
+            background-repeat:no-repeat;
+            background-size:cover;
+            margin: 0;
+            padding: 0;
+        }
+        .wmessage {
+            color: #A52A2A;
+            font-size: 35px;
+            font-family: "Courier New", Courier, monospace;
+            text-shadow: 2px 2px #FFEBCD;
+            text-transform: uppercase;
+            height: 50px;
+        }
+
+        .detail_me{
+            font-size: 20px;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .fa {
+            padding: 10px;
+            font-size: 30px;
+            width: 40px;
+            text-align: center;
+            text-decoration: none;
+            margin: 1px 2px;
+        }
+
+        .fa:hover {
+            opacity: 0.7;
+        }
+
+        .fa-facebook {
+            background: #3B5998;
+            color: white !important;
+        }
+
+        .fa-twitter {
+            background: #55ACEE;
+            color: white !important;
+        }
+        .fa-linkedin {
+            background: #007bb5;
+            color: white !important;
+        }
+
+        .logo {
+            font: 100px 'Arial Narrow', sans-serif;/* I picked this font because it's the closest looking 'web safe' font http://cssfontstack.com/ */
+            color: #fefefe;
+            text-transform: uppercase;
+            letter-spacing: -4px;
+            margin: 0;
+            height: 130px;
+        }
+
+        /* stuff for both words */
+        .logo span {
+            position: relative;
+        }
+        .logo span:before,.logo span:after {
+            content: '';
+            position: absolute;
+            border-width: 32px;/* makes a nice, big 64px square */
+            border-style: solid;
+            border-color: transparent;
+            height: 0;
+        }
+
+        /* stuff for 1st word */
+        .logo .word1 {
+            color: #A52A2A;
+            margin-right: -38px;
+            transform: rotateY(180deg);/* using Prefix free */
+            display: inline-block;/* required for transform */
+            z-index: 10;/* stack 1st word on top */
+        }
+        .logo .word1:before {
+            right: -4px;/* would be left, but we flipped the word */
+            top: -9px;
+            border-top-color: #282828;/* match background color */
+            border-right-color: #282828;/* would be left, but we flipped the word */
+        }
+        .logo .word1:after {
+            right: 17px;/* would be right, but we flipped the word */
+            bottom: -15px;
+            border-bottom-color: #282828;
+            border-left-color: #282828;/* would be right, but we flipped the word */
+        }
+
+        /* stuff for 2nd word */
+        .logo .word2 {
+            color: #FFEBCD;
+            z-index: 0;/* stack 2nd word below */
+        }
+        .logo .word2:before {
+            left: -4px;
+            top: -6px;
+            border-top-color: #282828;
+            border-left-color: #282828;
+        }
+        .logo .word2:after {
+            right: -4px;
+            bottom: 4px;
+            border-bottom-color: #282828;
+            border-right-color: #282828;
+        }
+        /* Navbar container */
+        .navbar {
+            overflow: hidden;
+            background-color: #333;
+            font-family: "Courier New", Courier, monospace;
+            text-transform: uppercase;
+            text-decoration: underline;
+        }
+
+        /* Links inside the navbar */
+        .navbar a {
+            float: left;
+            font-size: 16px;
+            color: #FFEBCD;
+            text-align: center;
+            padding: 14px 16px;
+            border-bottom: transparent solid 1px;
+        }
+
+        /* The dropdown container */
+        .dropdown {
+            float: left;
+            overflow: hidden;
+        }
+
+        /* Dropdown button */
+        .dropdown .dropbtn {
+            font-size: 16px;
+            border: none;
+            outline: none;
+            color: #FFEBCD;
+            padding: 9px 16px;
+            background-color: inherit;
+            font-family: "Courier New", Courier, monospace; /* Important for vertical align on mobile phones */
+            text-transform: uppercase;
+            margin: 0; /* Important for vertical align on mobile phones */
+        }
+
+        /* Add a red font color to navbar links on hover */
+        .navbar a:hover, .dropdown:hover .dropbtn {
+            text-shadow:0px 1px 10px #A52A2A;
+            color: #A52A2A;
+        }
+
+        /* Dropdown content (hidden by default) */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #FFEBCD;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        /* Links inside the dropdown */
+        .dropdown-content a {
+            float: none;
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+        }
+
+        /* Add a grey background color to dropdown links on hover */
+        .dropdown-content a:hover {
+            background-color: #ddd;
+        }
+
+        /* Show the dropdown menu on hover */
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        @media only screen and (max-width: 600px) {
+            .logo {
+                font: 13vw 'Arial Narrow', sans-serif;/* I picked this font because it's the closest looking 'web safe' font http://cssfontstack.com/ */
+                color: #fefefe;
+                text-transform: uppercase;
+                letter-spacing: -4px;
+                margin: 0;
+                height: 57px;
+            }
+
+            .logo .word1:after {
+                display: none;
+            }
+
+            .logo .word2:after {
+                display: none;
+            }
+
+            .fa-facebook,.fa-twitter, .fa-linkedin  {
+                width: 3%;
+            }
+
+            .fa-twitter{
+                margin-right: 3%;
+            }
+
+            .nav_bar_text {
+                font-size: 12px !important;
+            }
+
+            .detail_me{
+                font-size: 12px;
+            }
+
+            .dropdown .dropbtn {
+                padding: 11px 16px;
+            }
+        }
+
+
+    </style>
+</head>
+<body>
+    <h1 class="logo">
+        <span class="word1">Lee</span>
+        <span class="word2">Robertson</span>
+    </h1>
+    <div class="navbar">
+        <a class="nav_bar_text" href="#home">Home</a>
+        <a class="nav_bar_text" href="http://www.foxnews.com/">News</a>
+        <div class="dropdown">
+            <button class="dropbtn nav_bar_text">My Go To's &bigtriangledown;</button>
+            <div class="dropdown-content nav_bar_text">
+                <a href="http://learn.unt.edu">Blackboard</a>
+            </div>
+        </div>
+        <a href="https://twitter.com/youngkorean24" class="fa fa-twitter" style = "float: right"></a>
+        <a href="https://linkedin.com/in/lee-robertson-375353151" class="fa fa-linkedin" style = "float: right"></a>
+        <a href="https://facebook.com/lee.robertson.21" class="fa fa-facebook" style = "float: right"></a>
+    </div>
+    <p class='wmessage' align = 'center'>Welcome to my Webpage</p>
+    <div id='leeinfo'>
+        <img src ="images/updatedLee.jpg" alt="picofme" style="width: 20%; height: 20%; margin-left: 20px" align='left'>
+        <p class="detail_me" style = 'color: #FFEBCD; padding-left: 23.5%; text-align: left'> <b>Name:</b> Lee Robertson </p>
+        <p class="detail_me" style = 'color: #FFEBCD; padding-left: 23.5%; text-align: left'> <b>Age:</b> 21 </p>
+        <p class="detail_me" style = 'color: #FFEBCD; padding-left: 23.5%; text-align: left'> <b>Occupation:</b> Student at University of North Texas (Senior) / Software Developer</p>
+        <p class="detail_me" style = 'color: #FFEBCD; padding-left: 23.5%; text-align: left'> <b>Summary:</b> I currently live in Denton as a full-time student at UNT. When I am not at school, I spend my time working
+            to improve my skills as a software developer. I graduate in a May 2019, with my bachelors in Computer Science and a certificate
+            in cyber security. My plans are to change the world in a positive way with a new age of technology.
+        </p>
+    </div>
+</body>
+</html>
